@@ -1,5 +1,4 @@
 // import axios from 'axios'
-// import history from '../history'
 
 // /**
 //  * ACTION TYPES
@@ -9,7 +8,7 @@
 // /**
 //  * INITIAL STATE
 //  */
-// const defaultUser = {}
+const defaultUser = {}
 
 // /**
 //  * ACTION CREATORS
@@ -49,9 +48,8 @@
 
 //   try {
 //     dispatch(getUser(res.data))
-//     history.push('/home')
-//   } catch (dispatchOrHistoryErr) {
-//     console.error(dispatchOrHistoryErr)
+//   } catch (e) {
+//     console.error(e)
 //   }
 // }
 
@@ -68,13 +66,13 @@
 // /**
 //  * REDUCER
 //  */
-// export default function(state = defaultUser, action) {
-//   switch (action.type) {
-//     case GET_USER:
-//       return action.user
-//     case REMOVE_USER:
-//       return defaultUser
-//     default:
-//       return state
-//   }
-// }
+export default function(state = defaultUser, action = {}) {
+  switch (action.type) {
+    // case GET_USER:
+    //   return action.user
+    // case REMOVE_USER:
+    //   return defaultUser
+    default:
+      return state
+  }
+}

@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import {
   UserHome,
 } from './components'
-import {me} from './store'
 
 /**
  * COMPONENT
@@ -14,7 +13,9 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/home" component={UserHome} />
+        <Route exact path="/user" component={UserHome} />
+        {/* Default fallback below if path not found */}
+        <Route component={UserHome} />
       </Switch>
     )
   }
@@ -44,7 +45,7 @@ export default withRouter(connect(mapState, mapDispatch)(Routes))
 /**
  * PROP TYPES
  */
-Routes.propTypes = {
+// Routes.propTypes = {
   // loadInitialData: PropTypes.func.isRequired,
   // isLoggedIn: PropTypes.bool.isRequired
-}
+// }

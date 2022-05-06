@@ -4,7 +4,7 @@ const session = require('express-session')
 // const SequelizeStore = require('connect-session-sequelize')(session.Store)
 // const db = require('./db')
 // const sessionStore = new SequelizeStore({db})
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8081
 const app = express()
 module.exports = app
 
@@ -13,15 +13,15 @@ const createApp = () => {
   app.use(express.json({limit: '20mb', extended: true}))
   app.use(express.urlencoded({limit: '20mb', extended: true}))
 
-  // auth and api routes
+  // api routes
   app.use('/api', require('./api'))
 
   // static file-serving middleware
-  // app.use(express.static(path.join(__dirname, '..', 'public')))
+  app.use(express.static(path.join(__dirname, '..', 'public')))
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
-    if (path.extname(req.path).length) {
+    if (path.extname(req.path).length && req.path !== "/sw.js" && req.path !== "/favicon.ico") {
       const err = new Error('Not found')
       err.status = 404
       next(err)

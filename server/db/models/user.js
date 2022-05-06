@@ -1,5 +1,5 @@
-// const Sequelize = require('sequelize')
-// const db = require('../db')
+// import Sequelize from 'sequelize'
+// import db from '../db'
 
 // const User = db.define('user', {
 //   firstName: {
@@ -27,4 +27,5 @@
 //   },
 // })
 
-// module.exports = User
+// export default User
+export default {}

@@ -1,10 +1,10 @@
-const User = require('./user')
-// const Entry = require('./entry')
+import User from "./user"
+// import Entry from "./entry"
 
 // User.hasMany(Entry)
 // Entry.belongsTo(User)
 
-module.exports = {
+export default {
   User,
   // Entry,
 }
