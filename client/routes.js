@@ -13,8 +13,8 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" component={UserHome} />
-        <Route path="/test" component={HomePage}/>
+        <Route exact path="/user" component={UserHome} />
+        <Route path="/homepage" component={HomePage}/>
         {/* Default fallback below if path not found */}
         <Route component={UserHome} />
         
