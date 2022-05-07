@@ -1,19 +1,19 @@
-// import axios from 'axios'
+import axios from 'axios'
 
-// /**
-//  * ACTION TYPES
-//  */
-// const GET_USER = 'GET_USER'
+/**
+ * ACTION TYPES
+ */
+const GET_USER = 'GET_USER'
 
-// /**
-//  * INITIAL STATE
-//  */
+/**
+ * INITIAL STATE
+ */
 const defaultUser = {}
 
-// /**
-//  * ACTION CREATORS
-//  */
-// const getUser = user => ({type: GET_USER, user})
+/**
+ * ACTION CREATORS
+ */
+const getUser = user => ({ type: GET_USER, user })
 
 // /**
 //  * THUNK CREATORS
@@ -27,31 +27,27 @@ const defaultUser = {}
 //   }
 // }
 
-// export const auth = (
-//   method,
-//   email,
-//   password,
-//   firstName,
-//   lastName
-// ) => async dispatch => {
-//   let res
-//   try {
-//     res = await axios.post(`/auth/${method}`, {
-//       email,
-//       password,
-//       firstName,
-//       lastName
-//     })
-//   } catch (authError) {
-//     return dispatch(getUser({error: authError}))
-//   }
-
-//   try {
-//     dispatch(getUser(res.data))
-//   } catch (e) {
-//     console.error(e)
-//   }
-// }
+export const auth = (method, userInfo) => async dispatch => {
+    const { email, password, firstName, lastName } = userInfo
+    let res
+    try {
+        // Note: currently the following line won't do anything,
+        // since we didn't set up an API that handles this post request.
+        res = await axios.post(`/auth/${method}`, {
+            email,
+            password,
+            firstName,
+            lastName
+        })
+    } catch (authError) {
+        console.log(authError)
+    }
+    try {
+        dispatch(getUser(res.data))
+    } catch (e) {
+        console.error(e)
+    }
+}
 
 // export const logout = () => async dispatch => {
 //   try {
@@ -63,13 +59,13 @@ const defaultUser = {}
 //   }
 // }
 
-// /**
-//  * REDUCER
-//  */
+/**
+ * REDUCER
+ */
 export default function(state = defaultUser, action = {}) {
   switch (action.type) {
-    // case GET_USER:
-    //   return action.user
+    case GET_USER:
+      return action.user
     // case REMOVE_USER:
     //   return defaultUser
     default:
