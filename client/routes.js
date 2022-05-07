@@ -3,9 +3,9 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 // import PropTypes from 'prop-types'
 import {
-  UserHome,
+  UserHome
 } from './components'
-
+import {HomePage, Test} from './components/homepage'
 /**
  * COMPONENT
  */
@@ -13,9 +13,11 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/user" component={UserHome} />
+        <Route exact path="/" component={UserHome} />
+        <Route path="/test" component={HomePage}/>
         {/* Default fallback below if path not found */}
         <Route component={UserHome} />
+        
       </Switch>
     )
   }
