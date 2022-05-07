@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { HuePicker } from 'react-color'
 import { SliderPicker } from 'react-color'
+import { NavLink } from 'react-router-dom'
 import { Form, Image, Button, TextArea, Grid, Container,} from 'semantic-ui-react'
 
 
@@ -8,9 +9,22 @@ export default function CreateEntry(){
 
     const [color,setColor] = useState('ff0000')
 
+
     return(
-        <div >
-            <h1> hello</h1>
+        <div style={{
+            position: 'fixed', 
+            top:'0',
+            right:'0',
+            left:'0',
+            bottom:'0',
+            overflow: 'auto',  
+            flexDirection: 'row',
+            backgroundImage:'linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
+            backgroundSize:'cover'
+          }}>
+             <div style={{display:'flex',justifyContent: 'center',marginTop:'1.5em'}}>
+            <h1> Create New Entry</h1>
+            </div>
             <Container>
       <Grid collumns={3} style={{
               gap: '50px'
@@ -23,6 +37,36 @@ export default function CreateEntry(){
         <Grid.Row style={{justifyContent: 'space-around'}}>
         <form>
         <Grid.Column>
+
+        <Form.Field 
+        style={{marginBottom:10,
+        display:'flex',
+        justifyContent: 'flex-start',
+        flexDirection:'column',
+        fontSize: '20px',
+        alignItems: 'flex-start'
+        }}
+        >
+      <label>Name Of Entry</label>
+      <input placeholder='' />
+      </Form.Field>
+      
+        <Form.Field 
+        style={{marginBottom:10,
+        display:'flex',
+        justifyContent: 'flex-start',
+        flexDirection:'column',
+        fontSize: '20px',
+        alignItems: 'flex-start'
+        }}
+        >
+      <label>Date</label>
+      <input placeholder='1/09/22'/>
+      </Form.Field>
+
+     
+
+
             <label style={{fontSize: '15px',display: 'flex',justifyContent: 'center',fontSize:'30',marginBottom: '10px'}}> How Are You Feeling </label>
        <Form.Field   
          control={TextArea}
@@ -33,10 +77,11 @@ export default function CreateEntry(){
          flexDirection:'column',
          alignItems: 'center',
          fontSize: '20px',
-         
          }}
        />
+       <NavLink to="/user">
        <Form.Field control={Button} style={{marginTop:10,backgroundColor:color}}>Save</Form.Field>
+       </NavLink>
        </Grid.Column>
         </form>
 
@@ -44,7 +89,8 @@ export default function CreateEntry(){
             display: 'flex',
             marginTop:' 20px',
             flexDirection: 'row-reverse',
-            gap: '5px'
+            gap: '5px',
+            alignItems: 'center'
             }}>
         <div style={{justifyContent: 'center',alignItems: 'center'}}>
             <label style={{display: 'flex',justifyContent: 'center',fontSize:'30',marginBottom: '10px'}}>Select your mood color </label>

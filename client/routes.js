@@ -4,9 +4,11 @@ import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 // import PropTypes from 'prop-types'
 import {
   UserHome,
+  CreateEntry ,
+  EditEntry,
+  Entry
 } from './components'
-import CreateEntry from './components/CreateEntry'
-import EditEntry from './components/EditEntry'
+
 // import EditEntry from './components/EditEntry'
 
 /**
@@ -19,7 +21,8 @@ class Routes extends Component {
         <Route exact path="/user" component={UserHome} />
         {/* Default fallback below if path not found */}
         <Route path='/user/create' component={CreateEntry} />
-        <Route path='/user/Edit' component={EditEntry} />
+        <Route path='/user/edit' component={EditEntry} />
+        <Route path='/user/entry' component={Entry} />
       </Switch> 
     )
   }

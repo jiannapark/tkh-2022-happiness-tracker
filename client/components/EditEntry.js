@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { HuePicker } from 'react-color'
+import { NavLink } from 'react-router-dom'
 import { Form, Image, Button, TextArea, Grid, Container,} from 'semantic-ui-react'
 
 export default function EditEntry(){
     const [color,setColor] = useState('ff0000')
 
     return(
-        <div >
-            <h1> hello</h1>
+        <div style={{
+            position: 'fixed', 
+            top:'0',
+            right:'0',
+            left:'0',
+            bottom:'0',
+            overflow: 'auto',  
+            flexDirection: 'row',
+            backgroundImage:'linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
+            backgroundSize:'cover'
+          }}>
+            <div style={{display:'flex',justifyContent: 'center',marginTop:'5em'}}>
+            <h1 > Edit Entry </h1>
+            </div>
             <Container>
       <Grid collumns={3} style={{
               gap: '50px'
@@ -32,7 +46,9 @@ export default function EditEntry(){
          
          }}
        />
+       <NavLink to="/user/entry">
        <Form.Field control={Button} style={{marginTop:10,backgroundColor:color}}>Save</Form.Field>
+       </NavLink>
        </Grid.Column>
         </form>
 
