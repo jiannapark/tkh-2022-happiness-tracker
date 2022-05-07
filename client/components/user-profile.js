@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
+import { BlockPicker } from "react-color";
 import {
   Input,
   Button,
@@ -16,12 +17,10 @@ import {
 export const UserProfile = () => {
   const [currentBio, SetCurrentBio] = useState("");
   const [guiltyPleasure, setGuiltyPleasure] = useState("");
-  const [currentMoodImprovement, setCurrentMoodImprovement] = useState([
-    initialList,
-  ]);
+  const [currentMoodImprovement, setCurrentMoodImprovement] = useState({
+    // item: "Music",
+  });
   const [currentMoodRuin, setCurrentMoodRuin] = useState("");
-
-  const initialList = ["Music", "Pets"];
 
   const handleKeySubmitBio = (e, input) => {
     if (e.key === "Enter") {
@@ -47,11 +46,7 @@ export const UserProfile = () => {
     if (e.key === "Enter") {
       const handleSubmit = (text) => {
         setCurrentMoodImprovement(text);
-        return (
-          <div>
-            <List.Item>{currentMoodImprovement}</List.Item>
-          </div>
-        );
+        console.log(currentMoodImprovement);
       };
       handleSubmit(input);
     }
@@ -79,6 +74,10 @@ export const UserProfile = () => {
         margin: "0",
         padding: "0",
         fontFamily: "Amatic SC, cursive",
+        backgroundImage:
+          "url(https://images.unsplash.com/photo-1559251606-c623743a6d76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
       }}
     >
       <Card.Group>
@@ -89,13 +88,15 @@ export const UserProfile = () => {
             alignItems: "center",
             width: "40vw",
             height: "auto",
+            backgroundColor: "rgba(255,255,255,0.9)",
           }}
         >
           <Image
-            src="https://react.semantic-ui.com/images/wireframe/white-image.png"
+            src="https://images.unsplash.com/photo-1614154760213-3615cfe15525?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80"
             size="medium"
             bordered
           />
+
           <Card.Content>
             <Card.Header
               style={{
@@ -173,6 +174,7 @@ export const UserProfile = () => {
             flexDirection: "column",
             alignItems: "center",
             width: "40vw",
+            backgroundColor: "rgba(255,255,255,0.9)",
           }}
         >
           <div style={{ width: "30vw" }}>
@@ -201,10 +203,10 @@ export const UserProfile = () => {
                   width: "30vw",
                 }}
               >
-                {currentMoodImprovement.map((item) => {
+                {/* {currentMoodImprovement.map((item) => {
                   console.log(item);
                   return <List.Item>{item}</List.Item>;
-                })}
+                })} */}
                 {/* <List.Item>Last minute work</List.Item>
                 <List.Item>Loud noises</List.Item>
                 <List.Item>No sleep</List.Item>

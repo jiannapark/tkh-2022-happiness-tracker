@@ -5,8 +5,6 @@ import Routes from "./routes";
 const App = () => {
   return (
     <div>
-      <NavLink to={"/"}> Home </NavLink>
-      <NavLink to={"/user/profile"}></NavLink>
       <Routes />
     </div>
   );
